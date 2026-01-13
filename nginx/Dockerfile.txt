@@ -1,5 +1,5 @@
-FROM nginx:1.26.1
-# FROM artifactory.itg.ti.com/docker-public-local/nginx:1.26.1
+# FROM nginx:1.26.1
+FROM artifactory.itg.ti.com/docker-public-local/nginx:1.26.1
 
 RUN rm /etc/nginx/conf.d/default.conf
 
