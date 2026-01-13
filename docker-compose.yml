@@ -1,0 +1,54 @@
+version: '3.3'
+
+services:      
+  django:
+    build: ./SDKSureBackend
+    container_name: sdk-sure-django-backend
+    ports:
+      - 8000:8000
+    restart: always
+    volumes:
+      - ./data/config:/app/backend/config
+      - ./data/media:/app/backend/media
+      - ./data/static:/app/backend/static
+    depends_on:
+      - postgres
+  react:
+      build: ./SDKSureFrontend
+      container_name: sdk-sure-react-frontend
+      ports:
+        - 3000:3000
+      restart: always
+      tty: true
+      environment:
+        - CHOKIDAR_USEPOLLING=true
+      volumes:
+        - ./data/config/config.json:/app/frontend/public/config.json:ro
+      depends_on:
+        - django
+  postgres:
+    # image: artifactory.itg.ti.com/docker-public-local/postgres:17.2-alpine3.20
+    image: postgres:17.2-alpine3.20
+    container_name: sdk-sure-postgres-db
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      PGDATA: "/data/postgres"
+    volumes:
+      - ./data/db:/data/postgres
+  nginx:
+    build: ./nginx
+    container_name: sdk-sure-nginx-server
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+      - ./data/static:/app/backend/static
+      - ./data/media:/app/backend/media
+    depends_on:
+      - django
+      - react
+      - postgres

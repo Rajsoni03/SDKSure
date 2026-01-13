@@ -1,0 +1,6 @@
+[submodule "SDKSureBackend"]
+	path = SDKSureBackend
+	url = https://github.com/Rajsoni03/SDKSureBackend.git
+[submodule "SDKSureFrontend"]
+	path = SDKSureFrontend
+	url = https://github.com/Rajsoni03/SDKSureFrontend.git
