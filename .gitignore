@@ -3,3 +3,19 @@
 
 # Temp files and directories
 other/
+
+# Data and logs
+data/config/*
+!data/config/README.md
+
+data/db/*
+!data/db/README.md
+
+data/media/*
+!data/media/README.md
+
+data/static/*
+!data/static/README.md
+
+data/logs/*
+!data/logs/README.md
