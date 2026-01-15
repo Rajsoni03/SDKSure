@@ -38,7 +38,7 @@ services:
       POSTGRES_PASSWORD: "password"
       PGDATA: "/data/postgres"
     volumes:
-      - ./data/db:/data/postgres
+      - ./data/db/postgres:/data/postgres
   nginx:
     build: ./nginx
     container_name: sdk-sure-nginx-server
