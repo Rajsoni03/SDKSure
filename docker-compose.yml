@@ -3,7 +3,7 @@ version: '3.3'
 services:      
   django:
     build: ./SDKSureBackend
-    container_name: sdk-sure-django-backend
+    container_name: sdksure-django-backend
     ports:
       - 8000:8000
     restart: always
@@ -15,7 +15,7 @@ services:
       - postgres
   react:
       build: ./SDKSureFrontend
-      container_name: sdk-sure-react-frontend
+      container_name: sdksure-react-frontend
       ports:
         - 3000:3000
       restart: always
@@ -29,7 +29,7 @@ services:
   postgres:
     image: artifactory.itg.ti.com/docker-public-local/postgres:17.2-alpine3.20
     # image: postgres:17.2-alpine3.20
-    container_name: sdk-sure-postgres-db
+    container_name: sdksure-postgres-db
     ports:
       - 5432:5432
     restart: always
@@ -41,7 +41,7 @@ services:
       - ./data/db/postgres:/data/postgres
   nginx:
     build: ./nginx
-    container_name: sdk-sure-nginx-server
+    container_name: sdksure-nginx-server
     ports:
       - 80:80
     restart: always
