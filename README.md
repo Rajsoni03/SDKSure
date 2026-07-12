@@ -14,3 +14,23 @@ If you have already cloned the repository without submodules, you can initialize
 ```
 git submodule update --init --recursive
 ```
+
+## Developement Setup
+
+### Backend
+```
+cd SDKSureBackend
+source venv/bin/activate
+pip install -r requirements.txt
+
+python manage.py runserver
+```
+
+### Frontend
+```
+cd SDKSureFrontend/
+npm install
+
+npm run dev
+```
+
